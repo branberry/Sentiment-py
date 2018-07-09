@@ -14,7 +14,7 @@ class HelloWorld(Resource):
     def get(self):
         res = {}
         wiki = TextBlob("Python is a high-level, general-purpose programming language.")
-        res['textblob'] = wiki.tags
+        res['textblob'] = wiki.sentiment
         return res
 
 api.add_resource(HelloWorld, '/')
