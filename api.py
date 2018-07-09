@@ -1,5 +1,6 @@
 from flask import Flask
 from flask_restful import Resource, Api, reqparse
+from textblob import TextBlob
 
 app = Flask(__name__)
 api = Api(app)
@@ -8,10 +9,13 @@ api = Api(app)
 class TestModel(Resource):
     def post(self):
         return {}
-        
+
 class HelloWorld(Resource):
     def get(self):
-        return {'hello': 'world'}
+        res = {}
+        wiki = TextBlob("Python is a high-level, general-purpose programming language.")
+        res['textblob'] = wiki.tags
+        return res
 
 api.add_resource(HelloWorld, '/')
 
