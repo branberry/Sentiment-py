@@ -13,5 +13,5 @@ class Sentiment:
         res = {}
         for k,v in sents.items():
             sentence = TextBlob(v)
-            res[v] = sentence.sentiment.polarity
+            res[k] = sentence.sentiment.polarity
         return res

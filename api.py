@@ -3,6 +3,8 @@ from flask_restful import Resource, Api, reqparse
 
 from nlp.Sentiment import Sentiment
 
+import json
+
 app = Flask(__name__)
 api = Api(app)
 
@@ -23,8 +25,10 @@ class SentimentModel(Resource):
         # retreiving the data from the POST request
         args = parser.parse_args()
 
+        # convert sentences JSON object to dict
+        sentences = json.list(args['sentences'])
         # computing the sentiments!
-        sentimentAnalyzer.getSentiment(args['sentences'])      
+        sentimentAnalyzer.getSentiment(sentences)      
 
         return sentimentAnalyzer.getSentences()
 class TestModel(Resource):
