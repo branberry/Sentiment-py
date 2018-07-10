@@ -26,7 +26,7 @@ class SentimentModel(Resource):
         args = parser.parse_args()
         
         # convert sentences JSON object to dict
-        sentences = json.loads(args['sentences'])
+        sentences = json.load(args['sentences'])
         # computing the sentiments!
         sentimentAnalyzer.getSentiment(sentences)      
 
