@@ -1,4 +1,5 @@
 venv/
 .vscode/
+/nlp/__pycache__/
 
 test.py
