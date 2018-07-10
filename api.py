@@ -5,19 +5,22 @@ from textblob import TextBlob
 app = Flask(__name__)
 api = Api(app)
 
-
+parser = reqparse.RequestParser()
+parser.add_argument('text')
 class TestModel(Resource):
     def post(self):
-        return {}
+        res = {}
+        args = parser.parse_args()
+        res['text'] = args['text']
+        return res
 
 class HelloWorld(Resource):
     def get(self):
-        res = {}
-        wiki = TextBlob("Python is a high-level, general-purpose programming language.")
-        res['textblob'] = wiki.sentiment
-        return res
+        return {
+            'hello' : 'world'
+        }
 
 api.add_resource(HelloWorld, '/')
-
+api.add_resource(TestModel,'/test')
 if __name__ == '__main__':
     app.run(debug=True)
