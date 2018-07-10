@@ -11,8 +11,8 @@ class TestModel(Resource):
     def post(self):
         res = {}
         args = parser.parse_args()
-        res['text'] = args['text']
-        return res
+        res['text'] = args
+        return res, 201
 
 class HelloWorld(Resource):
     def get(self):
