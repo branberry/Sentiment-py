@@ -28,9 +28,9 @@ class SentimentModel(Resource):
         # convert sentences JSON object to dict
         sentences = json.load(args['sentences'])
         # computing the sentiments!
-        sentimentAnalyzer.getSentiment(sentences)      
+        res = sentimentAnalyzer.getSentiments(sentences)      
 
-        return sentimentAnalyzer.getSentences()
+        return res
 class TestModel(Resource):
     def post(self):
         res = {}

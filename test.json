@@ -1,4 +1,6 @@
 {
+	"sentences" : {	
 		"first" : "Textblob is amazingly simple to use. What great fun!",
 		"second" : "TextBlob is super hard to use and I hate it!"
+	}
 }

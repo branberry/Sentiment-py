@@ -8,8 +8,11 @@ class Sentiment:
     def getSentences(self):
         return self.sentences
     
+    # pass a single string as an argument
+    def getSentiment(self, sent):
+        pass
     # returning the sentiment value from the given list of sentences
-    def getSentiment(self, sents):
+    def getSentiments(self, sents):
         res = {}
         for k,v in sents.items():
             sentence = TextBlob(v)
