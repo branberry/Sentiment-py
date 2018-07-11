@@ -20,6 +20,7 @@ parser.add_argument('sentences')
 #  Using this model to handle NLP requests
 class SentimentModel(Resource):
     def post(self):
+        res = {}
         # the sentiment object that contains our methods
         sentimentAnalyzer = Sentiment()
         # retreiving the data from the POST request
@@ -28,7 +29,7 @@ class SentimentModel(Resource):
         # convert sentences JSON object to dict
         sentences = json.load(args['sentences'])
         # computing the sentiments!
-        res = sentimentAnalyzer.getSentiments(sentences)      
+        res['sentences'] = sentimentAnalyzer.getSentiments(sentences)      
 
         return res
 class TestModel(Resource):
