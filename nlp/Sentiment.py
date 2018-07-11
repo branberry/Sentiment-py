@@ -12,9 +12,8 @@ class Sentiment:
     def getSentiment(self, sent):
         pass
     # returning the sentiment value from the given list of sentences
-    def getSentiments(self, sents):
+    def getSentiments(self, key, sents):
         res = {}
-        for k,v in sents.items():
-            sentence = TextBlob(v)
-            res[k] = sentence.sentiment.polarity
+        sentence = TextBlob(sents)
+        res[key] = sentence.sentiment.polarity
         return res

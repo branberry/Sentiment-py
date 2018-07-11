@@ -6,7 +6,7 @@ from nlp.Sentiment import Sentiment
 import json
 
 app = Flask(__name__)
-app.debug=True
+app.run(debug=True)
 api = Api(app)
 
 # creating the parser to handle request data 
@@ -21,16 +21,19 @@ parser.add_argument('sentences')
 #  Using this model to handle NLP requests
 class SentimentModel(Resource):
     def post(self):
+
         res = {}
         # the sentiment object that contains our methods
         sentimentAnalyzer = Sentiment()
         # retreiving the data from the POST request
         args = parser.parse_args()
         
+        print(args['sentences'])
         # convert sentences JSON object to dict
-        sentences = json.load(args['sentences'])
+        sentences = args['sentences']
+        print(sentences)
         # computing the sentiments!
-        res['sentences'] = sentimentAnalyzer.getSentiments(sentences)      
+        res['sentences'] = sentimentAnalyzer.getSentiments('sentiment',sentences)      
 
         return res
 class TestModel(Resource):
