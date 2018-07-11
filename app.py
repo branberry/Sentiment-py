@@ -6,6 +6,7 @@ from nlp.Sentiment import Sentiment
 import json
 
 app = Flask(__name__)
+app.debug=True
 api = Api(app)
 
 # creating the parser to handle request data 
